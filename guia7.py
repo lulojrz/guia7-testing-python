@@ -160,8 +160,41 @@ def  iguales_consecutivos(x:list[int])-> bool:
     else :
         return False
         
-  
+    
     return afirmacion
         
         
+#ejercicio m 
+def vocalesDistintas(x:str) -> bool:
+    vocales:list[int] = ["a","b","c","d","e","f"]
+    contador = 0
+    if (x):
+     for letra in x:
+        if letra in vocales:
+            contador+= 1
+    else :
+        return False
+            
+    if contador>= 3:
+        return True
+    else: 
+        return False
+    
+    
+#ejercicio n
+
+#ejercicio q
+def cantidad_digitos_impares(x:list[int])-> int:
+    contador = 0
+    if x: 
+    
+     for num in x:
+        for digito in str(num):
+            if int(digito) % 2 != 0:
+                contador+=1
+                
+     return contador
+    else :
+        return contador
+            
         

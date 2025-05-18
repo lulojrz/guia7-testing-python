@@ -1,5 +1,5 @@
 import unittest
-from guia7 import pertenece_1,pertenece_2,pertenece_3,divide_a_todos,suma_total, maximo,minimo,ordenados, pos_maximo,pos_minimo, long_mayoraSiete,esPalindroma,iguales_consecutivos
+from guia7 import pertenece_1,pertenece_2,pertenece_3,divide_a_todos,suma_total, maximo,minimo,ordenados, pos_maximo,pos_minimo, long_mayoraSiete,esPalindroma,iguales_consecutivos, vocalesDistintas, cantidad_digitos_impares
 class test_pertenece1(unittest.TestCase):
     def test_pertenece1(self):
         self.assertTrue(pertenece_1([1,2,3],1))
@@ -147,6 +147,26 @@ class tests_iguales_consecutivos(unittest.TestCase):
     def test_mas_detres_consecutivosiguales(self):
         self.assertFalse(iguales_consecutivos([1,1,1,1,1,1]))
         
+        
+class test_vocales_distintas(unittest.TestCase):
+    def test_3_vocales(self):
+        self.assertTrue(vocalesDistintas("fabrizio"))
+    def test_sin_vocales(self):
+        self.assertFalse(vocalesDistintas("kjjjj"))
+    def test_masde3_vocales(self):
+        self.assertTrue(vocalesDistintas("murcielago"))
+        
+    def test_sinvocales_vacio(self):
+        self.assertFalse(vocalesDistintas(""))
+        
+class test_digitos_impares(unittest.TestCase):
+    def test_digitosimpares_correcto(self):
+        resultado_esperado = 3
+        self.assertEqual(cantidad_digitos_impares([12,12,10]),resultado_esperado)
+        
+    def test_digitosimpares_vacio(self):
+        resultado_esperado = 0
+        self.assertEqual(cantidad_digitos_impares([]),resultado_esperado)
             
 
 if __name__ == '__main__':
