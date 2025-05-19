@@ -1,5 +1,5 @@
 import unittest
-from guia7 import pertenece_1,pertenece_2,pertenece_3,divide_a_todos,suma_total, maximo,minimo,ordenados, pos_maximo,pos_minimo, long_mayoraSiete,esPalindroma,iguales_consecutivos, vocalesDistintas, cantidad_digitos_impares
+from guia7 import pertenece_1,pertenece_2,pertenece_3,divide_a_todos,suma_total, maximo,minimo,ordenados, pos_maximo,pos_minimo, long_mayoraSiete,esPalindroma,iguales_consecutivos, vocalesDistintas, cantidad_digitos_impares, ceroPosicionesPares2, sin_vocales,reemplazar_vocales,inflacion_anual,eliminar_repetidos,da_vuelta_str
 class test_pertenece1(unittest.TestCase):
     def test_pertenece1(self):
         self.assertTrue(pertenece_1([1,2,3],1))
@@ -167,7 +167,81 @@ class test_digitos_impares(unittest.TestCase):
     def test_digitosimpares_vacio(self):
         resultado_esperado = 0
         self.assertEqual(cantidad_digitos_impares([]),resultado_esperado)
+class test_inflacion_anual(unittest.TestCase):
+    def test_sin_inflacion(self):
+        resultado_esperado=0
+        self.assertEqual(inflacion_anual([0.0, 0.0]),resultado_esperado)
+
+    def test_año_estable(self):
+        resultado_esperado = 6.146
+        self.assertAlmostEqual(inflacion_anual([1.2, 1.2, 1.2, 1.2, 1.2]),resultado_esperado,places=3)
+
+class test_cero_posiciones_pares2(unittest.TestCase):
+    def test_cero_posiciones_pares2_esperado(self):
+        resultado_esperado= [0,1,0,3,0]
+        self.assertEqual(ceroPosicionesPares2([1,1,1,1,1]),resultado_esperado)
+
+    def test_cero_posiciones_pares2_vacio(self):
+        resultado_esperado = []
+        self.assertEqual(ceroPosicionesPares2([]),resultado_esperado)
+
+
+class test_sin_vocales(unittest.TestCase):
+    def test_sinvocales_nuevapalabra(self):
+        resultado_esperado="btmn"
+        self.assertEqual(sin_vocales("batman"),resultado_esperado)
+
+    def test_no_saca_vocales(self):
+        resultado_esperado = "pyth"
+        self.assertEqual(sin_vocales("pyth"),resultado_esperado)
+
+    def test_sin_vocales_vacio(self):
+        resultado_esperado = ""
+        self.assertEqual(sin_vocales(""),resultado_esperado)
             
+class test_reemplazar_vocales(unittest.TestCase):
+    def test_reemplazarvocalesCorrecto(self):
+        resultado_esperado = "m-rc--l-g-"
+        self.assertEqual(reemplazar_vocales("murcielago"),resultado_esperado)
+
+    def test_noreemplaza_vocales(self):
+        resultado_esperado="pyth"
+        self.assertEqual(reemplazar_vocales("pyth"),resultado_esperado)
+
+    def test_reemplaza_vocales_vacio(self):
+        resultado_esperado= ""
+        self.assertEqual(reemplazar_vocales(""),resultado_esperado)
+
+class test_dar_vuelta(unittest.TestCase):
+    def test_dar_vuelta_palindroma(self):
+        resultado_esperado="otto"
+        self.assertEqual(da_vuelta_str("otto"),resultado_esperado)
+
+    def test_dar_vuelta_nopalindroma(self):
+        resultado_esperado="acul"
+        self.assertEqual(da_vuelta_str("luca"),resultado_esperado)
+        
+    def test_dar_vuelta_vacio(self):
+        resultado_esperado=""
+        self.assertEqual(da_vuelta_str(""),resultado_esperado)
+
+
+class test_eliminarRepetidos(unittest.TestCase):
+    def test_eliminarrepetidos_correcto(self):
+        resultado_esperado="luvia"
+        self.assertEqual(eliminar_repetidos("lluvia"),resultado_esperado)
+
+    def test_sineliminarrepetidos(self):
+        resultado_esperado="resultado"
+        self.assertEqual(eliminar_repetidos("resultado"),resultado_esperado)
+
+    def test_eliminarRepetidos_vacio(self):
+        resultado_esperado=""
+        self.assertEqual(eliminar_repetidos(""),resultado_esperado)
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
