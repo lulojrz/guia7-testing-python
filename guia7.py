@@ -180,8 +180,7 @@ def vocalesDistintas(x:str) -> bool:
     else: 
         return False
     
-    
-#ejercicio n
+    #ejercicio n
 
 #ejercicio q
 def cantidad_digitos_impares(x:list[int])-> int:
@@ -192,6 +191,97 @@ def cantidad_digitos_impares(x:list[int])-> int:
         for digito in str(num):
             if int(digito) % 2 != 0:
                 contador+=1
+                
+     return contador
+    else :
+        return contador
+    
+
+
+#ejercicio 2.1
+#es como el 2.2 pero no devuelve nada, ya que es un procedimiento
+lista=[1,2,3,1,9]
+def ceroPosicionesPares(lista:list[int]):
+    for num in range(0,len(lista)):
+        if num%2==0:
+            lista[num]=0
+
+
+#ejercicio 2.2
+
+def ceroPosicionesPares2(x:list[int])-> list[int]:
+    nueva_lista=[]
+    for num in range(0,len(x)):
+        if num%2==0:
+            nueva_lista.append(0)
+
+        else :
+            nueva_lista.append(num)
+
+    return nueva_lista
+
+
+
+
+
+# ejercicio 2.3
+def sin_vocales(x:str) -> str:
+    vocales = ["a","e","i","o","u"]
+    nueva_cadena= ""
+    for letra in x:
+        if letra not in vocales:
+            nueva_cadena+=letra
+
+    return nueva_cadena
+
+#ejercicio 2.4
+def reemplazar_vocales(x:str) -> str:
+    vocales = ["a","e","i","o","u"]
+    nueva_cadena= ""
+    for letra in x:
+        if letra in vocales :
+            nueva_cadena+="-"
+        else:
+            nueva_cadena+=letra
+
+    return nueva_cadena
+
+
+#ejercicio 2.5
+def da_vuelta_str(x:str)-> str:
+    nueva_cadena=""
+    if esPalindroma(x)==True:
+        nueva_cadena=x
+
+    else:
+        for num in range(len(x)-1,-1,-1):
+            nueva_cadena+=x[num]
+
+
+    return nueva_cadena
+
+
+
+#ejercicio 2.6
+def eliminar_repetidos(x:str)-> str:
+    nueva_cadena=""
+    for letra in x:
+        if letra not in nueva_cadena:
+            nueva_cadena+=letra
+
+    return nueva_cadena
+
+
+
+#ejercicio inflacion anual
+def inflacion_anual(x:list[float])-> float:
+    acumulador:float= 1
+    for mes in x:
+        acumulador*= 1+ (mes/100)
+
+
+    return (acumulador-1)*100
+
                 
      return contador
     else :
