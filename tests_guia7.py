@@ -1,5 +1,5 @@
 import unittest
-from guia7 import pertenece_1,pertenece_2,pertenece_3,divide_a_todos,suma_total, maximo,minimo,ordenados, pos_maximo,pos_minimo, long_mayoraSiete,esPalindroma,iguales_consecutivos, vocalesDistintas, cantidad_digitos_impares, ceroPosicionesPares2, sin_vocales,reemplazar_vocales,inflacion_anual,eliminar_repetidos,da_vuelta_str
+from guia7 import pertenece_1,pertenece_2,pertenece_3,divide_a_todos,suma_total, maximo,minimo,ordenados, pos_maximo,pos_minimo, long_mayoraSiete,esPalindroma,iguales_consecutivos, vocalesDistintas, cantidad_digitos_impares, ceroPosicionesPares2, sin_vocales,reemplazar_vocales,eliminar_repetidos,da_vuelta_str
 class test_pertenece1(unittest.TestCase):
     def test_pertenece1(self):
         self.assertTrue(pertenece_1([1,2,3],1))
@@ -39,7 +39,6 @@ class test_divide(unittest.TestCase):
     
     def test_listavaciaendivide(self):
         self.assertFalse(divide_a_todos([],2))
-
 
 class tests_suma(unittest.TestCase):
     def test_suma_esperada(self):
@@ -167,7 +166,6 @@ class test_digitos_impares(unittest.TestCase):
     def test_digitosimpares_vacio(self):
         resultado_esperado = 0
         self.assertEqual(cantidad_digitos_impares([]),resultado_esperado)
-class test_inflacion_anual(unittest.TestCase):
     def test_sin_inflacion(self):
         resultado_esperado=0
         self.assertEqual(inflacion_anual([0.0, 0.0]),resultado_esperado)
@@ -175,7 +173,6 @@ class test_inflacion_anual(unittest.TestCase):
     def test_año_estable(self):
         resultado_esperado = 6.146
         self.assertAlmostEqual(inflacion_anual([1.2, 1.2, 1.2, 1.2, 1.2]),resultado_esperado,places=3)
-
 class test_cero_posiciones_pares2(unittest.TestCase):
     def test_cero_posiciones_pares2_esperado(self):
         resultado_esperado= [0,1,0,3,0]
@@ -184,8 +181,6 @@ class test_cero_posiciones_pares2(unittest.TestCase):
     def test_cero_posiciones_pares2_vacio(self):
         resultado_esperado = []
         self.assertEqual(ceroPosicionesPares2([]),resultado_esperado)
-
-
 class test_sin_vocales(unittest.TestCase):
     def test_sinvocales_nuevapalabra(self):
         resultado_esperado="btmn"
@@ -224,7 +219,6 @@ class test_dar_vuelta(unittest.TestCase):
     def test_dar_vuelta_vacio(self):
         resultado_esperado=""
         self.assertEqual(da_vuelta_str(""),resultado_esperado)
-
 
 class test_eliminarRepetidos(unittest.TestCase):
     def test_eliminarrepetidos_correcto(self):
