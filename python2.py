@@ -95,19 +95,27 @@ def pertenece_a_cadauno_1(x:list[list[int]],y:int)->list[bool]:
 
     
 
+
 #ejercicio 6.1
-def esMatriz(x:list[list[int]]) ->bool:
-    res: bool = False
-    for lista in x:
-        if lista[0]:
-          res= True
-          
-    return res
+def es_matriz(x:list[list[int]])-> bool:
+   res:bool = False
+   tamaño:int = len(x[0])
+   for num in range(1,len(x)):
+      if len(x[num])==tamaño:
+         res=True
+      else:
+         res=False
+         break
+      
+   return res
+
+
+
 
 #ejercicio 6.2
 def filas_ordenadas(x:list[list[int]]) ->[bool]:
     res:[bool] = []
-    if esMatriz(x)==True:
+    if es_matriz(x)==True:
      for lista in x:
         if ordenados(lista)==True:
             res.append(True)
@@ -119,3 +127,41 @@ def filas_ordenadas(x:list[list[int]]) ->[bool]:
 
 
 
+#ejercicio 6.3
+def columna(m:list[list[int]],c:int)-> list[int]:
+   columna_c:list[int] = []
+   tamaño:int= len(m[0])-1
+
+   if c<= tamaño and es_matriz(m)==True:
+      for lista in m:
+         columna_c.append(lista[c])
+
+   return columna_c
+
+
+#ejercicio 6.4
+def columnas_ordenadas(m:list[list[int]])-> list[bool]:
+   res:list[bool] = []
+   for columnita in range(len(m[0])):
+      una_columna:list[int] = columna(m,columnita)
+      esta_ordenada:bool = ordenados(una_columna)
+      res.append(esta_ordenada)
+
+   return res
+
+      
+#ejercicio 6.5
+def transponer(m:list[list[int]])-> list[list[int]]:
+    res: list[list[int]] = []
+    tamaño:int = len(m[0])
+    if es_matriz(m):
+     for num in range(tamaño):
+        fila = columna(m,num)
+        res.append(fila)
+        
+    return res 
+        
+        
+print(transponer([[1,2,3]
+                ,[5,6,8],
+                [9,10]]))
