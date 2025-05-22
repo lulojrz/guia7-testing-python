@@ -1,5 +1,5 @@
 import unittest
-from python2 import resultado_materia,saldoActual, pertenece_a_cadauno_1,es_matriz,filas_ordenadas,columna,columnas_ordenadas,transponer
+from python2 import resultado_materia,saldoActual, pertenece_a_cadauno_1,es_matriz,filas_ordenadas,columna,columnas_ordenadas,transponer,quien_gana_tateti
 class test_resultado_materia(unittest.TestCase):
     def test_todo_desaprobado(self):
         resultado_esperado =3 
@@ -81,7 +81,48 @@ class test_transponer(unittest.TestCase):
         
 
         
+ class test_tateti(unittest.TestCase):
+    def test_tateti_diagonal_1(self):
+        resultado_esperado=0
+        self.assertEqual(quien_gana_tateti([["X","X","O"],
+                                            ["X","O","X"],
+                                            ["O","O","X"]]),resultado_esperado)
         
+    def test_tateti_diagonal_2(self):
+        resultado_esperado = 1
+        self.assertEqual(quien_gana_tateti([["X","X","O"],
+                                            ["O","X","X"],
+                                            ["O","O","X"]]),resultado_esperado)
+        
+    def test_tateti_vertical_X(self):
+        resultado_esperado = 1
+        self.assertEqual(quien_gana_tateti([["X","X","O"],
+                                            ["O","X","X"],
+                                            ["O","X","O"]]),resultado_esperado)
+        
+    def test_tateti_vertical_Y(self):
+        resultado_esperado = 0
+        self.assertEqual(quien_gana_tateti([["O","X","O"],
+                                            ["O","X","X"],
+                                            ["O","O","X"]]),resultado_esperado)
+        
+    def test_tateti_hor_X(self):
+        resultado_esperado = 1
+        self.assertEqual(quien_gana_tateti([["O","X","O"],
+                                            ["X","X","X"],
+                                            ["X","O","O"]]),resultado_esperado)
+        
+    def test_tateti_hor_Y(self):
+        resultado_esperado = 0
+        self.assertEqual(quien_gana_tateti([["O","X","X"],
+                                            ["X","O","X"],
+                                            ["O","O","O"]]),resultado_esperado)
+    def test_tateti_ningunganador(self):
+        resultado_esperado = 2
+        self.assertEqual(quien_gana_tateti([["O","X","O"],
+                                            ["X","O","X"],
+                                            ["X","O","X"]]),resultado_esperado)
+       
 
         
         
