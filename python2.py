@@ -165,3 +165,106 @@ def transponer(m:list[list[int]])-> list[list[int]]:
 print(transponer([[1,2,3]
                 ,[5,6,8],
                 [9,10]]))
+
+
+
+#funciones comodines
+def es_matriz(x:list[list[int]])-> bool:
+   res:bool = False
+   tamaño:int = len(x[0])
+   for num in range(1,len(x)):
+      if len(x[num])==tamaño:
+         res=True
+      else:
+         res=False
+         break
+      
+   return res
+
+def columna(m:list[list[int]],c:int)-> list[int]:
+   columna_c:list[int] = []
+   tamaño:int= len(m[0])-1
+
+   if c<= tamaño and es_matriz(m)==True:
+      for lista in m:
+         columna_c.append(lista[c])
+
+   return columna_c
+
+def transponer(m:list[list[int]])-> list[list[int]]:
+    res: list[list[int]] = []
+    tamaño:int = len(m[0])
+    if es_matriz(m):
+     for num in range(tamaño):
+        fila = columna(m,num)
+        res.append(fila)
+        
+    return res 
+
+#ejercicio 6.6
+
+def analizarFilas(x:list[str])->int:
+    resultado:int = 2
+    if x == ["X","X","X"]:
+        resultado = 1
+    elif x == ["O","O","O"]:
+        resultado = 0
+    else :
+        resultado =  2
+        
+    
+    
+    return resultado
+
+def analizo_diagonal(x:list[list[str]])->int:
+    
+    resultado = 2
+    primera_diagonal = [x[0][0],x[1][1],x[2][2]]
+    segunda_diagonal = [x[0][2],x[1][1],x[2][0]]
+    
+    if primera_diagonal == ["X","X","X"] or segunda_diagonal ==["X","X","X"]:
+        resultado = 1
+    elif primera_diagonal == ["O","O","O"] or segunda_diagonal ==["O","O","O"]:
+        resultado =0
+    else: 
+        resultado = 2
+    
+    return resultado
+        
+
+ 
+
+def quien_gana_tateti(x:list[list[str]])->int:
+    res:int = 2
+    if es_matriz(x):
+        columnas = transponer(x)
+        if analizo_diagonal(x) == 1 :
+            res = 1
+        elif analizo_diagonal(x) == 0:
+            res = 0
+        else: 
+ 
+         for fila in x:
+           res_hor = analizarFilas(fila)
+           if res_hor == 1 or res_hor==0:
+            res = res_hor
+           else:
+               
+             for fila in columnas:
+              res_ver= analizarFilas(fila)
+              if res_ver == 1 or res_ver==0:
+               res=res_ver
+               break
+               
+         
+       
+       
+      
+   
+       
+    return res
+        
+        
+
+
+
