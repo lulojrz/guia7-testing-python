@@ -1,3 +1,4 @@
+import random
 def pertenece_1 (x:list[int], y:int) -> bool:
     
     afirmacion :bool = False 
@@ -263,7 +264,66 @@ def quien_gana_tateti(x:list[list[str]])->int:
    
        
     return res
+
+
+
+
+
+
+#secuencias
+#ejercicio 7.1
+def ingresar_mis_estudiante() ->list[str]:
+    estudiantes:list[str]=[]
+    correcto = True
+    while correcto:
+        nombre = input("ingrese un nombre de estudiante : ")
+        if nombre =="listo" or nombre == "":
+            break
+        else : 
+            estudiantes.append(nombre)
+            
+            
+    return estudiantes
+
+#ejercicio 7.2
+def historial_sube() ->list[(str,int)]:
+    historial:list[(str,int)]= []
+    correcto = True
+    while correcto :
+        operacion = input("ingrese C para cargar o D para descontar o X para finalizar: " )
+        if operacion == "C" or operacion =="D":
+          monto = int(input("ingrese monto : "))
+          historial.append((operacion,monto))
+         
+        if operacion =="X" :
+            break
         
+    return historial
+
+def siete_y_medio():
+    historial_cartas = []
+    puntaje = 0
+    correcto = True
+    while correcto :
+        decision = input("desea sacar carta?  ")
+        if decision =="si":
+            carta = random.randint(1,12)
+            if carta !=8 and carta!=9:
+                historial_cartas.append(carta)
+                if carta in [10,11,12]:
+                    puntaje+=0.5
+                else :
+                    puntaje+=carta
+        else:
+            break
+        
+    
+    if puntaje > 7.5 :
+        print("perdiste, tu puntaje fue : ", puntaje," tus cartas fueron : ", historial_cartas)
+    else:
+     print("ganaste, tu puntaje fue : ", puntaje," tus cartas fueron : ", historial_cartas)
+     
+    
         
 
 
