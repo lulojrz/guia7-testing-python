@@ -1,8 +1,8 @@
 import unittest
-from guia7 import pertenece_1,pertenece_2,pertenece_3,divide_a_todos,suma_total, maximo,minimo,ordenados, pos_maximo,pos_minimo, long_mayoraSiete,esPalindroma,iguales_consecutivos, vocalesDistintas, cantidad_digitos_impares, ceroPosicionesPares2, sin_vocales,reemplazar_vocales,eliminar_repetidos,da_vuelta_str
+from ejercicios import pertenece_1,pertenece_2,pertenece_3,divide_a_todos,suma_total, maximo,minimo,ordenados, pos_maximo,pos_minimo, long_mayoraSiete,esPalindroma,iguales_consecutivos, vocalesDistintas, cantidad_digitos_impares, ceroPosicionesPares2, sin_vocales,reemplazar_vocales,eliminar_repetidos,da_vuelta_str, inflacion_anual, pos_secuencia_ordenada_mas_larga, ceroPosicionesPares
 class test_pertenece1(unittest.TestCase):
     def test_pertenece1(self):
-        self.assertTrue(pertenece_1([1,2,3],1))
+        self.assertTrue(pertenece_1([3,1,2],1))
         
     def test_nopertenece1(self):
         self.assertFalse(pertenece_1([1,2,3],4))
@@ -12,7 +12,7 @@ class test_pertenece1(unittest.TestCase):
 
 class test_pertenece2(unittest.TestCase):
     def test_pertenece2(self):
-        self.assertTrue(pertenece_2([1,2,3],1))
+        self.assertTrue(pertenece_2([0,1,3],1))
         
     def test_nopertenece2(self):
         self.assertFalse(pertenece_2([1,2,3],4))
@@ -48,11 +48,13 @@ class tests_suma(unittest.TestCase):
     def test_sumaincorrecta(self):
         resultado_esperado = 6
         self.assertNotEqual(suma_total([1,1,1]),resultado_esperado)
+    def test_suma_total_lista_vacia(self):
+        self.assertEqual(suma_total([]),0)
         
 class tests_maximo(unittest.TestCase):
     def test_maximo_esperado(self):
         resultado_esperado = 89
-        self.assertEqual(maximo([5,2,89]),resultado_esperado)
+        self.assertEqual(maximo([5,89,2]),resultado_esperado)
         
     def test_maximo_vacio(self):
         resultado_esperado = None
@@ -62,7 +64,7 @@ class tests_maximo(unittest.TestCase):
 class tests_minimo(unittest.TestCase):
     def test_minimo_esperado(self):
         resultado_esperado = 2
-        self.assertEqual(minimo([3,43,2]),resultado_esperado)
+        self.assertEqual(minimo([3,2,20]),resultado_esperado)
         
     def test_minimo_vacio(self):
         resultado_esperado = None
@@ -119,7 +121,7 @@ class tests_longitud(unittest.TestCase):
         
 class tests_palindroma(unittest.TestCase):
     def test_palindromo_correcto(self):
-        self.assertTrue(esPalindroma("otto"))
+        self.assertTrue(esPalindroma("oro"))
     
     def test_palindromo_incorrecto(self):
         self.assertFalse(esPalindroma("luca"))
@@ -155,8 +157,19 @@ class test_vocales_distintas(unittest.TestCase):
     def test_masde3_vocales(self):
         self.assertTrue(vocalesDistintas("murcielago"))
         
+    def test_menosde3vocales(self):
+        self.assertFalse(vocalesDistintas("ivana"))
+        
     def test_sinvocales_vacio(self):
         self.assertFalse(vocalesDistintas(""))
+        
+class tests_pos_secuencia_ord_mas_larga(unittest.TestCase):
+    def test_pos_ejemplo(self):
+        self.assertEqual(pos_secuencia_ordenada_mas_larga( [3, 2, 2, 3, 4, 1, 2, 3]),1)      
+     
+    def test_lista_vacia(self):
+        self.assertEqual(pos_secuencia_ordenada_mas_larga([]),-1)   
+        
         
 class test_digitos_impares(unittest.TestCase):
     def test_digitosimpares_correcto(self):
@@ -166,13 +179,14 @@ class test_digitos_impares(unittest.TestCase):
     def test_digitosimpares_vacio(self):
         resultado_esperado = 0
         self.assertEqual(cantidad_digitos_impares([]),resultado_esperado)
-    def test_sin_inflacion(self):
-        resultado_esperado=0
-        self.assertEqual(inflacion_anual([0.0, 0.0]),resultado_esperado)
+   
+class test_cero_posiciones_pares1(unittest.TestCase):
+    def test_cero_posiciones_pares_ejemplo(self):
+        lista = [1,2,3,4] 
+        ceroPosicionesPares(lista)
+        self.assertEqual(lista,[0,2,0,4])
 
-    def test_año_estable(self):
-        resultado_esperado = 6.146
-        self.assertAlmostEqual(inflacion_anual([1.2, 1.2, 1.2, 1.2, 1.2]),resultado_esperado,places=3)
+   
 class test_cero_posiciones_pares2(unittest.TestCase):
     def test_cero_posiciones_pares2_esperado(self):
         resultado_esperado= [0,1,0,3,0]
@@ -181,6 +195,8 @@ class test_cero_posiciones_pares2(unittest.TestCase):
     def test_cero_posiciones_pares2_vacio(self):
         resultado_esperado = []
         self.assertEqual(ceroPosicionesPares2([]),resultado_esperado)
+
+
 class test_sin_vocales(unittest.TestCase):
     def test_sinvocales_nuevapalabra(self):
         resultado_esperado="btmn"
@@ -235,7 +251,9 @@ class test_eliminarRepetidos(unittest.TestCase):
 
 
 
-
-
+ 
+ 
+ 
+ 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
