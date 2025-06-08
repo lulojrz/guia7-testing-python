@@ -1,5 +1,5 @@
 import unittest
-from python2 import resultado_materia,saldoActual, pertenece_a_cadauno_1,es_matriz,filas_ordenadas,columna,columnas_ordenadas,transponer,quien_gana_tateti
+from ejercicios import resultado_materia,saldoActual, pertenece_a_cadauno_1,es_matriz,filas_ordenadas,columna,columnas_ordenadas,transponer,quien_gana_tateti
 class test_resultado_materia(unittest.TestCase):
     def test_todo_desaprobado(self):
         resultado_esperado =3 
@@ -30,6 +30,14 @@ class test_saldo_actual(unittest.TestCase):
         resultado_esperado=0
         self.assertEqual(saldoActual([]),resultado_esperado)
 
+
+class tests_pertenece_a_cadauno1(unittest.TestCase):
+    def test_pertenece_a_cadauno1(self):
+        resultado_esperado = [True,True,False]
+        self.assertEqual(pertenece_a_cadauno_1([[1,2],[1,3],[5,4]],1),resultado_esperado)
+
+    def test_pertenece_a_cadauno_1_vacio(self):
+        self.assertEqual(pertenece_a_cadauno_1([],1),[]) 
 
 class test_es_matriz(unittest.TestCase):
     def test_es_matriz_listas_mismos_n_elementos(self):
@@ -81,7 +89,7 @@ class test_transponer(unittest.TestCase):
         
 
         
- class test_tateti(unittest.TestCase):
+class test_tateti(unittest.TestCase):
     def test_tateti_diagonal_1(self):
         resultado_esperado=0
         self.assertEqual(quien_gana_tateti([["X","X","O"],
@@ -123,6 +131,7 @@ class test_transponer(unittest.TestCase):
                                             ["X","O","X"],
                                             ["X","O","X"]]),resultado_esperado)
        
+
 
         
         
