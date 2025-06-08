@@ -1,6 +1,5 @@
-from typing import List
 #ejercicio 1a
-def pertenece_1 (x:List[int], y:int) -> bool:
+def pertenece_1 (x:list[int], y:int) -> bool:
     
     afirmacion :bool = False 
     for elemento in x:
@@ -9,7 +8,7 @@ def pertenece_1 (x:List[int], y:int) -> bool:
             
     return afirmacion
 
-def pertenece_2(x:List[int],y:int) -> bool:
+def pertenece_2(x:list[int],y:int) -> bool:
     afirmacion: bool = False
     for num in range(0,len(x)):
         if x[num] == y:
@@ -17,7 +16,7 @@ def pertenece_2(x:List[int],y:int) -> bool:
     
     return afirmacion
             
-def pertenece_3(x:List[int],y:int)  -> bool:
+def pertenece_3(x:list[int],y:int)  -> bool:
     inicio:int = 0
     afirmacion:bool= False
     while inicio < len(x):
@@ -29,19 +28,21 @@ def pertenece_3(x:List[int],y:int)  -> bool:
     return afirmacion 
      
 #ejercicio 1b
-def divide_a_todos(x:List[int],y:int)-> bool:
-    afirmacion:bool= False
-    for elemento in x:
-        if elemento % y == 0:
-            afirmacion = True
-        else:
+def divide_a_todos(x:list[int],y:int)-> bool:
+    afirmacion:bool= True
+    if x : 
+     for elemento in x:
+        if elemento % y != 0:
             afirmacion = False
-            break
+            
+    else : 
+      return False
+       
         
     return afirmacion
 
 #ejercicio 1c
-def suma_total(x:List[int])-> int:
+def suma_total(x:list[int])-> int:
     contador:int = 0
     for elemento in x :
         contador+= elemento
@@ -49,12 +50,14 @@ def suma_total(x:List[int])-> int:
     return contador
 
 #ejercicio 1d
-def maximo(x:List[int])-> int:
+def maximo(x:list[int])-> int:
     if not x:
-        return None
+      return None
+    else :
+      
     
-    max:int= x[0]
-    for num in range(1,len(x)):
+     max:int= x[0]
+     for num in range(1,len(x)):
         if x[num] > max:
             max = x[num]
             
@@ -62,65 +65,63 @@ def maximo(x:List[int])-> int:
 
 
 #ejercicio 1e
-def minimo(x:List[int])-> int:
+def minimo(x:list[int])-> int:
     if not x:
         return None
+    else:
     
-    min:int= x[0]
-    for num in range(1,len(x)):
+     min:int= x[0]
+     for num in range(1,len(x)):
         if x[num] < min:
             min = x[num]
             
     return min
 
 #ejercicio 1f
-def ordenados(x:List[int])-> bool:
-    afirmacion: bool = False
+def ordenados(x:list[int])-> bool:
+    afirmacion: bool = True
     if not x :
-        afirmacion = False
-        
+      afirmacion = False
+      return afirmacion    
     else:
      primero:int = x[0]
-
      for num in range(1,len(x)):
-      if primero  > x[num]: 
-        afirmacion = False
-        break
-     else:
-       primero = x[num]  
-       afirmacion=True
+      if primero  <= x[num]: 
+        primero = x[num]
+        afirmacion = True
+      else : 
+        return  False
     
     return afirmacion
  
 #ejercicio 1g
-def pos_maximo(x:List[int])-> int:
-    if (x):
+def pos_maximo(x:list[int])-> int:
+    if x:
      maximo_num =  maximo(x)
      pos_max = x.index(maximo_num)
      return pos_max
     else:
-        return -1
+      return -1
 
 
 #ejercicio 1h
-def pos_minimo(x:List[int])-> int:
-    if (x):
+def pos_minimo(x:list[int])-> int:
+    if x:
      minimo_num =  minimo(x)
      pos_max = x.index(minimo_num)
      return pos_max
     else:
-        return -1
+       return -1
     
 #ejercicio 1i
-def long_mayoraSiete(x:List[str])-> int:
+def long_mayoraSiete(x:list[str])-> int:
     afirmacion =  False
     if (x):
         for elemento in x :
             if len(elemento)>7:
                 afirmacion = True
-                break
-    else : 
-      afirmacion = False
+                return afirmacion
+                
         
    
     return afirmacion 
@@ -137,8 +138,6 @@ def esPalindroma(x:str)-> bool:
            afirmacion = True
         else:
             afirmacion = False
-    else : 
-        afirmacion = True
         
     return afirmacion
 
@@ -153,34 +152,61 @@ def  iguales_consecutivos(x:list[int])-> bool:
                contador+=1
      
        if contador ==3 :
-             return True    
-       else:
-           return False
-           
-    else :
-        return False
+          afirmacion = True   
+
         
-    
     return afirmacion
         
         
 #ejercicio m 
 def vocalesDistintas(x:str) -> bool:
-    vocales:list[int] = ["a","b","c","d","e","f"]
-    contador = 0
-    if (x):
+  vocales:list[int] = ["a","e","i","o","u" ]
+  contador = 0
+  afirmacion = False
+  vocales_usadas=[]
+  if x:
      for letra in x:
-        if letra in vocales:
+        if letra in vocales and letra not in vocales_usadas:
+            vocales_usadas.append(letra)
             contador+= 1
-    else :
-        return False
-            
-    if contador>= 3:
-        return True
-    else: 
-        return False
-    
-    #ejercicio n
+   
+     if contador>= 3 :
+      afirmacion = True
+
+
+  return afirmacion
+
+
+#ejercicio n
+def pos_secuencia_ordenada_mas_larga(x: list[int]) -> int:
+    if len(x) == 0:
+        return -1  # O manejar error
+
+    inicio_maximo = 0
+    longitud_maxima = 1
+
+    inicio_actual = 0
+    longitud_actual = 1
+
+    for i in range(1, len(x)):
+        if x[i] >= x[i - 1]:
+            longitud_actual += 1
+        else:
+            if longitud_actual > longitud_maxima:
+                longitud_maxima = longitud_actual
+                inicio_maximo = inicio_actual
+            inicio_actual = i
+            longitud_actual = 1
+
+    # Verificar si la última subsecuencia fue la más larga
+    if longitud_actual > longitud_maxima:
+        inicio_maximo = inicio_actual
+
+    return inicio_maximo
+
+
+
+
 
 #ejercicio q
 def cantidad_digitos_impares(x:list[int])-> int:
@@ -192,15 +218,13 @@ def cantidad_digitos_impares(x:list[int])-> int:
             if int(digito) % 2 != 0:
                 contador+=1
                 
-     return contador
-    else :
-        return contador
+    return contador
+
     
 
 
 #ejercicio 2.1
 #es como el 2.2 pero no devuelve nada, ya que es un procedimiento
-lista=[1,2,3,1,9]
 def ceroPosicionesPares(lista:list[int]):
     for num in range(0,len(lista)):
         if num%2==0:
@@ -251,7 +275,7 @@ def reemplazar_vocales(x:str) -> str:
 def da_vuelta_str(x:str)-> str:
     nueva_cadena=""
     if esPalindroma(x)==True:
-        nueva_cadena=x
+       nueva_cadena=x
 
     else:
         for num in range(len(x)-1,-1,-1):
@@ -283,8 +307,4 @@ def inflacion_anual(x:list[float])-> float:
     return (acumulador-1)*100
 
                 
-     return contador
-    else :
-        return contador
-            
-        
+ 
