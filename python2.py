@@ -37,11 +37,12 @@ def suma_total(x:list[int])-> int:
         
     return contador
 
+
+
 def resultado_materia(x:list[int])-> int:
     
-    tamanio:int = len(x)
     resul:int = 0
-    promedio:int = int(suma_total(x)/tamanio)
+    promedio:int = int(suma_total(x)/len(x))
     desaprobados:int = 0
     notas_mayor_a_4:int = 0
     
@@ -51,7 +52,7 @@ def resultado_materia(x:list[int])-> int:
         else:
             desaprobados+=1
             
-    if desaprobados==0 and notas_mayor_a_4 == tamanio:
+    if desaprobados==0 and notas_mayor_a_4 == len(x):
         if promedio >= 7:
             resul = 1
         
@@ -70,13 +71,9 @@ def saldoActual(movimientos:list[(str,int)])->int:
     for movimiento in movimientos:
         if movimiento[0] =="R" or movimiento[0] =="r":
             saldo-=movimiento[1]
-        else:
-            saldo+=0
         
         if movimiento[0]=="I" or movimiento[0]=="i":
          saldo+= movimiento[1]
-        else:
-            saldo+= 0
          
     return saldo
         
@@ -105,8 +102,7 @@ def es_matriz(x:list[list[int]])-> bool:
       if len(x[num])==tamaño:
          res=True
       else:
-         res=False
-         break
+         return False
       
    return res
 
@@ -163,9 +159,7 @@ def transponer(m:list[list[int]])-> list[list[int]]:
     return res 
         
         
-print(transponer([[1,2,3]
-                ,[5,6,8],
-                [9,10]]))
+
 
 
 
@@ -324,7 +318,6 @@ def siete_y_medio():
      print("ganaste, tu puntaje fue : ", puntaje," tus cartas fueron : ", historial_cartas)
      
     
-        
-
+   
 
 
